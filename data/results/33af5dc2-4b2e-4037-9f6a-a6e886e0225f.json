@@ -1,0 +1,33 @@
+{
+  "id": "33af5dc2-4b2e-4037-9f6a-a6e886e0225f",
+  "filename": "1159022_normalized_1.wav",
+  "stored_name": "8b48d142-f86c-41c8-b9f6-fd17a21cf502.wav",
+  "language": "en",
+  "language_probability": 0.994,
+  "language_forced": false,
+  "language_low_confidence": false,
+  "language_breakdown": [
+    {
+      "language": "en",
+      "share": 1.0,
+      "avg_probability": 0.994
+    }
+  ],
+  "is_mixed_language": false,
+  "duration_seconds": 17.52,
+  "transcript": "Hello, this is Amazon. This call to authorize a payment of $999. We would like inform you that there's an order placed for Apple iPhone 11 Pro using the Amazon account",
+  "transcript_english": "Hello, this is Amazon. This call to authorize a payment of $999. We would like inform you that there's an order placed for Apple iPhone 11 Pro using the Amazon account",
+  "category": "spam",
+  "confidence": 0.74,
+  "matched_keywords": [],
+  "signals": {
+    "has_link": false,
+    "phone_numbers": [],
+    "has_long_number": false,
+    "mentions_money": true,
+    "robocall_patterns": []
+  },
+  "extracted_numbers": [],
+  "analyzed_at": "2026-07-16T11:03:29.416345+00:00",
+  "status": "pending"
+}

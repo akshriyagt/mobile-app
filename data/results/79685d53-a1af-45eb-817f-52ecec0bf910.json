@@ -1,0 +1,39 @@
+{
+  "id": "79685d53-a1af-45eb-817f-52ecec0bf910",
+  "filename": "1034902_normalized.wav",
+  "stored_name": "144ee5c8-3779-4074-9524-6092029b6ec3.wav",
+  "language": "zh",
+  "language_probability": 0.66,
+  "language_forced": false,
+  "language_low_confidence": false,
+  "language_breakdown": [
+    {
+      "language": "zh",
+      "share": 1.0,
+      "avg_probability": 0.66
+    }
+  ],
+  "is_mixed_language": false,
+  "duration_seconds": 32.58,
+  "transcript": "FedEx International Express will inform you for the last time that You have a parcel That has been delivered twice and no one Has signed it. For English inquiries, please press 1 And Chinese, please Press 2 The last announcement of FedEx international express delivery Is to send two free-range people To check English request Chinese request English request Chinese request",
+  "transcript_english": "FedEx International Express will inform you for the last time that You have a parcel That has been delivered twice and no one Has signed it. For English inquiries, please press 1 And Chinese, please Press 2 The last announcement of FedEx international express delivery Is to send two free-range people To check English request Chinese request English request Chinese request",
+  "category": "spam",
+  "confidence": 0.86,
+  "matched_keywords": [
+    "press 1",
+    "parcel that has been delivered"
+  ],
+  "signals": {
+    "has_link": false,
+    "phone_numbers": [],
+    "has_long_number": false,
+    "mentions_money": false,
+    "robocall_patterns": [
+      "press 1",
+      "parcel that has been delivered"
+    ]
+  },
+  "extracted_numbers": [],
+  "analyzed_at": "2026-07-16T11:03:53.275823+00:00",
+  "status": "pending"
+}

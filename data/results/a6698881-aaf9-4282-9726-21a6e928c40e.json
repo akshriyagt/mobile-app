@@ -1,0 +1,39 @@
+{
+  "id": "a6698881-aaf9-4282-9726-21a6e928c40e",
+  "filename": "1100784_right_1.wav",
+  "stored_name": "ca0e2f9e-e3dc-4179-baa4-521b274b2163.wav",
+  "language": "en",
+  "language_probability": 0.991,
+  "language_forced": false,
+  "language_low_confidence": false,
+  "language_breakdown": [
+    {
+      "language": "en",
+      "share": 1.0,
+      "avg_probability": 0.991
+    }
+  ],
+  "is_mixed_language": false,
+  "duration_seconds": 46.28,
+  "transcript": "Hi, I'm a robot. Please say your name, the legal name of The entity responsible for Call and contact address And phone number",
+  "transcript_english": "Hi, I'm a robot. Please say your name, the legal name of The entity responsible for Call and contact address And phone number",
+  "category": "spam",
+  "confidence": 0.86,
+  "matched_keywords": [
+    "i'm a robot",
+    "legal name of the entity responsible"
+  ],
+  "signals": {
+    "has_link": false,
+    "phone_numbers": [],
+    "has_long_number": false,
+    "mentions_money": false,
+    "robocall_patterns": [
+      "i'm a robot",
+      "legal name of the entity responsible"
+    ]
+  },
+  "extracted_numbers": [],
+  "analyzed_at": "2026-07-16T11:03:37.917439+00:00",
+  "status": "pending"
+}

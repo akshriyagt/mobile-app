@@ -1,0 +1,41 @@
+{
+  "id": "a21e960d-51ff-45ef-90a4-f66bb4ae7269",
+  "filename": "1006858_normalized_1.wav",
+  "stored_name": "be39a80f-23c7-4f39-9fc7-5248b96e8da9.wav",
+  "language": "en",
+  "language_probability": 0.997,
+  "language_forced": false,
+  "language_low_confidence": false,
+  "language_breakdown": [
+    {
+      "language": "en",
+      "share": 1.0,
+      "avg_probability": 0.997
+    }
+  ],
+  "is_mixed_language": false,
+  "duration_seconds": 9.58,
+  "transcript": "There is an order placed for Apple iPhone 11 Pro using your Amazon account. If you do not authorize this Order, press 1 or Press 2 to Authorize This Order",
+  "transcript_english": "There is an order placed for Apple iPhone 11 Pro using your Amazon account. If you do not authorize this Order, press 1 or Press 2 to Authorize This Order",
+  "category": "spam",
+  "confidence": 0.98,
+  "matched_keywords": [
+    "press 1",
+    "do not authorize",
+    "to authorize this order"
+  ],
+  "signals": {
+    "has_link": false,
+    "phone_numbers": [],
+    "has_long_number": false,
+    "mentions_money": false,
+    "robocall_patterns": [
+      "press 1",
+      "do not authorize",
+      "to authorize this order"
+    ]
+  },
+  "extracted_numbers": [],
+  "analyzed_at": "2026-07-16T11:04:01.906168+00:00",
+  "status": "pending"
+}
