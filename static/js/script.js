@@ -167,6 +167,8 @@ function buildCard(r) {
 
     <div class="waveform">${bars}</div>
 
+    ${r.summary ? `<div class="card-summary"><strong>AI summary:</strong> ${escapeHtml(r.summary)}</div>` : ''}
+
     <div class="card-transcript">
       <button class="transcript-toggle" data-toggle="transcript" aria-expanded="false">
         ${ICONS.transcript} <span>Show transcript</span> ${ICONS.chevron}
