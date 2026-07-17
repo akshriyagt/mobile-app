@@ -406,6 +406,13 @@ body{
   padding:10px 12px; max-height:220px; overflow-y:auto; white-space:pre-wrap;
 }
 
+.card-summary{
+  font-size:0.8rem; line-height:1.5; color:var(--text-muted);
+  background:var(--bg); border:1px solid var(--border-soft); border-radius:8px;
+  padding:10px 12px; margin-top:2px;
+}
+.card-summary strong{ color:var(--text); }
+
 .card-status{
   font-family:var(--font-mono); font-size:0.68rem; color:var(--text-dim);
   text-align:center; padding:6px; border-top:1px dashed var(--border-soft);
