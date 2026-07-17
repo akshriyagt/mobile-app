@@ -21,6 +21,8 @@ import uuid
 from collections import Counter
 from datetime import datetime, timezone
 
+import requests
+
 from flask import Flask, request, jsonify, send_from_directory, send_file
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
@@ -67,6 +69,53 @@ print("[call-analyzer] model ready.")
 # Minimum probability below which we consider the detected language
 # untrustworthy rather than silently presenting it as fact.
 LANGUAGE_CONFIDENCE_FLOOR = 0.5
+
+# ---------------------------------------------------------------------------
+# Optional AI summary via Ollama (local LLM).
+#
+# Ollama runs on the machine that's running this Flask app — great for local
+# development, but it's not reachable from a cloud host like Railway unless
+# Ollama is also deployed there. So this feature is "best effort": if
+# OLLAMA_URL isn't reachable, summary generation is skipped and every other
+# feature (transcription, classification) keeps working normally.
+#
+# Override with env vars if needed, e.g.:
+#   OLLAMA_MODEL=mistral python app.py
+# ---------------------------------------------------------------------------
+OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2")
+OLLAMA_TIMEOUT_SECONDS = 15
+
+
+def generate_summary(transcript: str, category: str) -> str | None:
+    """Ask a local Ollama model for a 1-2 sentence summary of the call.
+
+    Returns None (never raises) if Ollama isn't running/reachable, so a
+    missing local LLM never breaks the main analyze pipeline.
+    """
+    if not transcript or not transcript.strip():
+        return None
+
+    prompt = (
+        "Summarize this phone call transcript in 1-2 short sentences. "
+        "Be factual and concise, no preamble, no quotes.\n\n"
+        f"Category: {category}\n"
+        f"Transcript: {transcript[:3000]}"
+    )
+
+    try:
+        resp = requests.post(
+            f"{OLLAMA_URL}/api/generate",
+            json={"model": OLLAMA_MODEL, "prompt": prompt, "stream": False},
+            timeout=OLLAMA_TIMEOUT_SECONDS,
+        )
+        resp.raise_for_status()
+        summary = resp.json().get("response", "").strip()
+        return summary or None
+    except requests.exceptions.RequestException as e:
+        # Ollama not running, wrong model name, network unreachable, etc.
+        print(f"[call-analyzer] Ollama summary skipped: {e}")
+        return None
 
 # ---------------------------------------------------------------------------
 # Multilingual keyword banks used for classification.
@@ -373,6 +422,10 @@ def analyze_file(filepath: str, original_name: str, forced_language: str = None)
     category, confidence, matched = classify(text, signals)
     transcript_english = text
 
+    # Best-effort AI summary (see generate_summary docstring for why this
+    # can legitimately be None on cloud deployments without Ollama).
+    summary = generate_summary(text, category)
+
 
 
     result = {
@@ -388,6 +441,7 @@ def analyze_file(filepath: str, original_name: str, forced_language: str = None)
         "duration_seconds": round(info.duration, 2),
         "transcript": text,                        # English (translate task runs directly)
         "transcript_english": transcript_english,  # same as above, kept for frontend compat
+        "summary": summary,            # AI-generated (Ollama), None if unavailable
         "category": category,          # spam | important | normal
         "confidence": confidence,
         "matched_keywords": matched,
